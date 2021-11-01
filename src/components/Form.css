@@ -1,0 +1,30 @@
+.fbForm {
+    width: 100%;
+    min-height: 400px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+  }
+  
+  .fbForm input {
+    border-radius: 20px;
+    border: black;
+    height: 30px;
+    padding: 0px 10px;
+    margin: 10px;
+    background-color: white;
+  }
+  
+  .fbForm div {
+    margin: 10px;
+  }
+  
+  .fbForm button {
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color:darkturquoise;
+    cursor: pointer;
+  }

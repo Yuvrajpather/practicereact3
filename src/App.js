@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Form from "./components/Form";
+import Feedback from "./components/Feedback";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    employee: [],
+    display: "form",
+  };
+
+  fnFeedback = (name, department, rating) => {
+    let arg1 = [...this.state.employee];
+    let empState = {id: this.state.employee.length, name, department, rating,};
+    arg1.push(empState);
+    this.setState({ employee: arg1, display: "feedback" });
+  };
+
+  Tab1 = (tab) => {
+    this.setState({ display: tab });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        {this.state.display === "form" ? (
+          <h1>EMPLOYEE FEEDBACK FORM</h1>
+        ) : this.state.display === "feedback" ? (
+          <h1>EMPLOYEE FEEDBACK DATA</h1>
+        ) : null}
+        {this.state.display === "form" ? (
+          <Form fbElement = {this.fnFeedback} />
+        ) : (
+          <Feedback
+            Tab = {this.state.employee}
+            Tab1 = {this.Tab1}
+          />
+        )}
+      </div>
+    );
+  }
 }
 
 export default App;
